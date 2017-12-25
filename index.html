@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBygxeV-oz78Ea1RRelQzNgiEtSdqymapA&libraries=places"></script>
 
   </head>
   <body>
@@ -19,17 +20,17 @@
               <p class="card-text">
                 </p><form class="form-inline">
                 <label class="sr-only" for="inlineFormInput">Start Point</label>
-                <input class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Start Point" type="text">
+                <input class="form-control mb-2 mr-sm-2 mb-sm-0" id="start_location" placeholder="Start Point" type="text" required="">
 
                 <label class="sr-only" for="inlineFormInputGroup">End Point</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <input class="form-control" id="inlineFormInputGroup" placeholder="End Point" type="text">
+                  <input class="form-control" id="end_location" placeholder="End Point" type="text" required="">
                 </div>
-                <label class="sr-only" for="inlineFormInputGroup">End Point</label>
+                <label class="sr-only" for="inlineFormInputGroup">Start Date</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <input class="form-control" id="inlineFormInputGroup" placeholder="Start Date" type="date">
                 </div>
-                <label class="sr-only" for="inlineFormInputGroup">End Point</label>
+                <label class="sr-only" for="inlineFormInputGroup">End Date</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <input class="form-control" id="inlineFormInputGroup" placeholder="End Date" type="date">
                 </div>
@@ -39,6 +40,19 @@
             </form></div>
           </div>
     </div>
+<!--  AIzaSyBygxeV-oz78Ea1RRelQzNgiEtSdqymapA 
+ -->    <script>
+            //set up autocomplete
+            function init() {
+                var input1 = document.getElementById('start_location');
+                var autocomplete = new google.maps.places.Autocomplete(input1);
+
+                var input2 = document.getElementById('end_location');
+                var autocomplete = new google.maps.places.Autocomplete(input2);
+            }
+
+            google.maps.event.addDomListener(window, 'load', init);
+        </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
