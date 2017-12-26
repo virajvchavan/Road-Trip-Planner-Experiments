@@ -1,0 +1,4 @@
+- Created a MySQL database which stores all the relevant information related to the user, the trips created by the user
+- used an Apache server with PHP to proccess the data from the already created webpages
+- linked the MySQL database with the front-end
+- used Google Maps API to search for places in a certain area
