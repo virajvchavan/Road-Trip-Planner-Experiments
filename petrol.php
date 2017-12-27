@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="container">
-      <br><br><h3>Add Petrol Pumps to the Trip: <a href="spots.html" class="btn btn-success float-right">Next</a></h3>
+      <br><br><h3>Add Petrol Pumps to the Trip: <a href="spots.php" class="btn btn-success float-right">Next</a></h3>
       <br>
       <div class="row">
         <div class="col-sm">

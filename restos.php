@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="container">
-      <br><br><h3>Add Hotels to the Trip: <a href="restos.html" class="btn btn-success float-right">Next</a></h3>
+      <br><br><h3>Add Restaurants to the Trip: <a href="petrol.php" class="btn btn-success float-right">Next</a></h3>
       <br>
       <div class="row">
         <div class="col-sm">

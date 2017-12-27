@@ -5,7 +5,8 @@ include "conn.inc.php";
 //only echo the neccessary things
 
 
-//echo back the newly added trip's id
+//storing start/end locations/dates (A new trip row is created in database)
+//echo back the newly added trip's id (DO NOT echo ANYTHING ELSE)
 if(isset($_POST['start_loc']) && !empty($_POST['start_loc']) && isset($_POST['end_loc']) && !empty($_POST['end_loc']) && isset($_POST['start_date']) && isset($_POST['end_date']))
 {
 	//echo $_POST['start_date'];
@@ -25,8 +26,22 @@ if(isset($_POST['start_loc']) && !empty($_POST['start_loc']) && isset($_POST['en
 	}
 	else
 	    echo "mysqli_error()";
+}
 
 
+//storing hotels for a trip (A new trip row is created in database)
+if(isset($_POST['trip_id']) && !empty($_POST['trip_id']) && isset($_POST['hotel_name']) && !empty($_POST['hotel_name']) && isset($_POST['hotel_addr']) && isset($_POST['hotel_website']) && isset($_POST['hotel_phone']) && isset($_POST['hotel_rating']) && isset($_POST['hotel_link']))
+{
+	//echo $_POST['start_date'];
+	$query = "INSERT INTO `hotels` (`id`, `link`, `user_id`, `trip_id`, `name`, `address`, `phone`, `website`, `rating`) VALUES (NULL, '".$_POST['hotel_link']."', '".$_POST['user_id']."' ,'".$_POST['trip_id']."' , '".$_POST['hotel_name']."', '".$_POST['hotel_addr']."', '".$_POST['hotel_phone']."', '".$_POST['hotel_website']."', '".$_POST['hotel_rating']."')";
+
+	echo $query;
+	if(mysqli_query($conn, $query))
+	{
+		echo "hotel inserted";
+	}
+	else
+	    echo "mysqli_error()";
 }
 
 ?>
