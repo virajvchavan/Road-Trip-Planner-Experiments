@@ -8,6 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
 
   </head>
   <body>
@@ -47,39 +50,6 @@
           </div>
           </div>
         </div>
-      <br>
-      <h4>Restaurants</h4>
-      <div class="row">
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Hotel+Adarsha+Palace/@15.8586188,74.5214057,14z/data=!4m8!1m2!2m1!1shotels+in+belgavi!3m4!1s0x3bbf669f5095362f:0xc888250c3ed94c48!8m2!3d15.8638421!4d74.5081404" target="_blank"><h4 class="card-title">Hotel Adarsha Palace</h4></a>
-              <p class="card-text">
-                #3360/2B,College Road, Opp. Lingaraj College, Khade Bazar, Raviwar Peth, Belagavi, Karnataka 590001
-<br>
-                Website: <a href="http://hoteladarshapalace.com/" target="_blank">
-hoteladarshapalace.com</a><br>
-                Call: 08312435777<br>
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/The+Leela+Goa/@15.8605429,73.978382,9z/data=!4m8!1m2!2m1!1shotels+in+goa!3m4!1s0x0:0xc023d7efb70a49a2!8m2!3d15.156808!4d73.9486313" target="_blank"><h4 class="card-title">The Leela Goa</h4></a>
-              <p class="card-text">
-                Mobor, Cavelossim, Salcette, Goa 403731<br>
-                Website: <a href="http://theleela.com/" target="_blank">theleela.com</a><br>
-                Call: 08326621234<br>
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-        </div>
-      </div>
       <br>
 
       <h4>Petrol Pumps:</h4> 
@@ -144,16 +114,5 @@ hoteladarshapalace.com</a><br>
     </div>
     <br>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="js/popper.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
-      $(".btn-primary").click(function(){
-        $(this).addClass('btn-success');
-        $(this).html("Added to trip!")
-      });
-    </script>
   
 </body></html>

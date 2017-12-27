@@ -27,7 +27,7 @@
   </head>
   <body>
     <div class="container">
-      <br><br><h3>Add Hotels to the Trip: <a href="restos.php?trip=<?php echo $_GET['trip']; ?>" class="btn btn-success float-right">Next</a></h3>
+      <br><br><h3>Add Hotels to the Trip: <a href="petrol.php?trip=<?php echo $_GET['trip']; ?>" class="btn btn-success float-right">Next</a></h3>
       <br>
       <div class="row">
         <div class="col-sm">
