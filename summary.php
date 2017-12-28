@@ -1,3 +1,8 @@
+<?php
+error_reporting(-1);
+include 'conn.inc.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -15,103 +20,222 @@
   </head>
   <body>
     <div class="container">
-      <br><br><h3>Trip Summary: <a href="#" class="btn btn-success float-right">Print</a></h3>
+      <br><br><h3>Trip Summary: <a onclick="window.print()" class="btn btn-success float-right">Print</a></h3>
       <br>
-      <h4><span class="badge badge-primary">Sangli, Maharashtra</span> -------&gt; <span class="badge badge-primary">Goa</span></h4><br>
-      <h4><span class="badge badge-secondary">1 Nov, 2017</span>---------&gt; <span class="badge badge-secondary">4 Nov, 2017</span><hr>
-      </h4><h4>Hotels:</h4> 
-      <div class="row">
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Hotel+Eefa,+Belgaum/@15.8584565,74.5214057,14z/data=!4m8!1m2!2m1!1shotels+in+belgavi!3m4!1s0x3bbf66ae79c86fc5:0xeb692048b4492231!8m2!3d15.868097!4d74.508962" target="_blank"><h4 class="card-title">Hotel Eefa, Belgaum</h4></a>
-              <p class="card-text">
-                3935 Club Road, Kallehol, Camp, Belagavi, Karnataka 590001<br>
-                Website: <a href="http://www.eefahotels.com/" target="_blank">eefahotels.com</a><br>
-                Call: 08312498777<br>
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-        </div>
+      <?php
 
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Taj+Fort+Aguada+Resort+%26+Spa,+Goa/@15.8593414,73.978395,9z/data=!4m8!1m2!2m1!1shotels+in+goa!3m4!1s0x3bbfc175b543664d:0xc2b14e0b1a4873ef!8m2!3d15.4974484!4d73.7669604" target="_blank"><h4 class="card-title">Taj Fort Aguada Resort and Spa, Goa</h4></a>
-              <p class="card-text">
-                Sinquerim, Candolim, Bardez, Goa 403515<br>
-                Website: <a href="http://taj.tajhotels.com/" target="_blank">taj.tajhotels.com</a><br>
-                Call: 08326645858<br>
-                Rating: 4.5/5
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-          </div>
-        </div>
-      <br>
+      if(isset($_GET['trip']) && !empty($_GET['trip']))
+      {
+        $query = "SELECT * FROM trips WHERE id = ".$_GET['trip'];
+        if($run = mysqli_query($conn, $query))
+        {
+            if(mysqli_num_rows($run) != 1)
+            {
+                header("Location:index.php");
+            }
+            while($array = mysqli_fetch_assoc($run))
+            {
+                $start_addr = $array['start_addr'];
+                $end_addr = $array['end_addr'];
+                $start_date = $array['start_date'];
+                $end_date = $array['end_date'];
+                $trip_user_id = $array['user_id'];
+           }
+         }
+       }
+       else
+       {
+        echo "trip id kuthe aahe bhavaa?";
+       }
 
-      <h4>Petrol Pumps:</h4> 
-      <div class="row">
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-               <a href="https://www.google.co.in/maps/place/Bharat+Petroleum+Petrol+Pump/@16.8423452,74.5898734,12.54z/data=!4m8!1m2!2m1!1spetrol+pump!3m4!1s0x0:0xa939d5550fd8ff9!8m2!3d16.8630954!4d74.576633" target="_blank"><h4 class="card-title">Bharat Petroleum Petrol Pump</h4></a>
-              <p class="card-text">
-                Vyankatesh Nagar, Sangli, Maharashtra 416416<br>
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-        </div>
+      ?>
+      <h4><span class="badge badge-primary"><?php echo $start_addr; ?></span> -------&gt; <span class="badge badge-primary"><?php echo $end_addr; ?></span></h4><br>
+      <h4><span class="badge badge-secondary"><?php echo $start_date; ?></span> ---------&gt; <span class="badge badge-secondary"><?php echo $end_date; ?></span><hr>
+      </h4><h4>Hotels: <?php echo "<a data-toggle='modal' data-target='#hotel_modal' class='btn btn-primary' href='hotels.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4>
 
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Hare+Krishna+Petrol+Pump/@15.65874,74.0845915,11.62z/data=!4m8!1m2!2m1!1spetrol+pump!3m4!1s0x3bbf97e4eec5fef1:0xef7b6b6480e7f45c!8m2!3d15.5718306!4d74.0161002" target="_blank"><h4 class="card-title">Hare Krishna Petrol Pump</h4></a>
-              <p class="card-text">
-                Hpcl Dealer, Survey NO.78/1-A, Tulshimala, Poriem, Sanquelim, Tehsil Sattari, Vasco, Goa 403505
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
+      <div class="modal fade" id="hotel_modal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" style="height: 550px;">
+                <iframe src="hotels.php?trip=<?php echo $_GET['trip']; ?>" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
-          </div>
-        </div>
-
-        <h4>Tourist Spots:</h4> 
-      <div class="row">
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Ancestral+Goa/@15.3398295,73.9842235,17z/data=!3m1!4b1!4m5!3m4!1s0x3bbfb054f7d4e441:0x5cd3e1ecd2f5bf60!8m2!3d15.3398243!4d73.9864122" target="_blank"><h4 class="card-title">Ancestral Goa</h4></a>
-              <p class="card-text">
-                Outdoor cultural museum featuring a recreated ancient Goa village, with pottery making and dancing.<br>
-                Near Saviour of the World Church, Loutolim, Loutolim, Goa, Goa 403718<br>
-                Rating: 3.9/5.0
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-body">
-              <a href="https://www.google.co.in/maps/place/Varanda+Do+Mar/@15.8605429,73.978382,9z/data=!4m8!1m2!2m1!1shotels+in+goa!3m4!1s0x3bbfc0c30b94e0b9:0x47711930073f99e4!8m2!3d15.476667!4d73.809269" target="_blank"><h4 class="card-title">Varanda Do Mar</h4></a>
-              <p class="card-text">
-                Near Goa Science Center, Miramar, Panjim, Goa 403002<br>
-                Website: <a href="http://varandadomar.com/" target="_blank">varandadomar.com</a><br>
-                Call: 08322464400<br>
-                Rating: 4.1/5
-              </p>
-              <a href="#!" class="btn btn-danger">Remove</a>
-            </div>
-          </div>
-          </div>
-        </div>
-      <br>
     </div>
+
+      <?php
+
+      $query_hotels = "SELECT * FROM hotels WHERE trip_id = ".$_GET['trip'];
+        if($run = mysqli_query($conn, $query_hotels))
+        {
+            if(mysqli_num_rows($run) == 0)
+            {
+                echo "You haven't added any hotels.<br>";
+            }
+            echo '<div class="row">
+            ';
+            while($array = mysqli_fetch_assoc($run))
+            {
+                $hotel_name = $array['name'];
+                $hotel_addr = $array['address'];
+                $hotel_phone = $array['phone'];
+                $hotel_website = $array['website'];
+                $hotel_rating = $array['rating'];
+                $hotel_link = $array['link'];
+
+                echo '<div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <a href="'.$hotel_link.'" target="_blank">
+                      <h4 class="card-title">'.$hotel_name.'</h4></a>
+                      <p class="card-text">
+                        '.$hotel_addr.'<br>
+                        Website: <a href="'.$hotel_website.'" target="_blank">'.$hotel_website.'</a><br>
+                        Call: '.$hotel_phone.'<br>
+                      </p>
+                      <a href="#!" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
+                  </div>
+                ';
+
+           }
+           echo '</div>';
+        }
+       else
+       {
+        echo "hotels gandlay";
+       }
+
+      ?>
+      
+      <br>
+<hr>
+      </h4><h4>Petrol Pumps: <?php echo "<a data-toggle='modal' data-target='#petrol_modal' class='btn btn-primary' href='petrol.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
+
+      <div class="modal fade" id="petrol_modal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" style="height: 550px;">
+                <iframe src="petrol.php?=<?php echo $_GET['trip']; ?>" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+    </div>
+
+      <?php
+
+      $query_petrol = "SELECT * FROM petrol WHERE trip_id = ".$_GET['trip'];
+        if($run = mysqli_query($conn, $query_petrol))
+        {
+            if(mysqli_num_rows($run) == 0)
+            {
+                echo "You haven't added any petrol pumps.<br>";
+            }
+            echo '<div class="row">
+            ';
+            while($array = mysqli_fetch_assoc($run))
+            {
+                $petrol_name = $array['name'];
+                $petrol_addr = $array['addr'];
+                $petrol_link = $array['link'];
+
+                echo '<div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <a href="'.$petrol_link.'" target="_blank">
+                      <h4 class="card-title">'.$petrol_name.'</h4></a>
+                      <p class="card-text">
+                        '.$petrol_addr.'<br>
+                      </p>
+                      <a href="#!" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
+                  </div>
+                ';
+           }
+           echo '</div>';
+        }
+       else
+       {
+        echo "pettols gandlay";
+       }
+
+      ?>
+      
+      <br>
+
+
+        <hr>
+      </h4><h4>Tourist Spots: <?php echo "<a data-toggle='modal' data-target='#spots_modal' class='btn btn-primary' href='spots.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
+
+      <div class="modal fade" id="spots_modal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" style="height: 550px;">
+                <iframe src="spots.php?trip=<?php echo $_GET['trip']; ?>" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+    </div>
+
+      <?php
+
+      $query_spots = "SELECT * FROM spots WHERE trip_id = ".$_GET['trip'];
+        if($run = mysqli_query($conn, $query_spots))
+        {
+            if(mysqli_num_rows($run) == 0)
+            {
+                echo "You haven't added any tourist spots.<br>";
+            }
+            echo '<div class="row">
+            ';
+            while($array = mysqli_fetch_assoc($run))
+            {
+                $spot_name = $array['name'];
+                $spot_addr = $array['addr'];
+                $spot_descr = $array['descr'];
+                $spot_rating = $array['rating'];
+                $spot_link = $array['link'];
+
+                echo '<div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <a href="'.$spot_link.'" target="_blank">
+                      <h4 class="card-title">'.$spot_name.'</h4></a>
+                      <p class="card-text">
+                        '.$spot_addr.'<br>
+                        <br>
+                        '.$spot_descr.'
+                        <br>
+                        Rating: '.$spot_rating.'
+                      </p>
+                      <a href="#!" class="btn btn-danger">Remove</a>
+                    </div>
+                  </div>
+                  </div>
+                ';
+
+           }
+           echo '</div>';
+        }
+       else
+       {
+        echo "hotels gandlay";
+       }
+
+      ?>
+      
+      <br>
     <br>
 
   
