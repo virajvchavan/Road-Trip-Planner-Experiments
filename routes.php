@@ -8,53 +8,49 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
 
   </head>
+
+  <?php
+
+      include "conn.inc.php";
+      
+      if(isset($_GET['trip']) && !empty($_GET['trip']))
+      {
+        $query = "SELECT * FROM trips WHERE id = ".$_GET['trip'];
+        if($run = mysqli_query($conn, $query))
+        {
+            if(mysqli_num_rows($run) != 1)
+            {
+                header("Location:index.php");
+            }
+            while($array = mysqli_fetch_assoc($run))
+            {
+                $start_addr = $array['start_addr'];
+                $end_addr = $array['end_addr'];
+           }
+         }
+       }
+       else
+       {
+        echo "trip id kuthe aahe bhavaa?";
+       }
+    ?>
+
   <body>
     <div class="container">
-      <br><br><h3>Select a route: </h3>
+    <br><br><h3>Confirm the route: <a href="hotels.php?trip=<?php echo $_GET['trip']; ?>" class="btn btn-success float-right">Confirm</a> </h3>
       <br>
-        <div class="row">
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Via NH48 </h5>262 km &nbsp;&nbsp;&nbsp;(5 hours 15 mins)
-                <img src="routes_files/1.png" alt="1">
-                <br><br>
-                <a href="hotels.html" class="btn btn-primary">Select</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Via NH748 </h5>240 km  &nbsp;&nbsp;&nbsp;(5 hours 21 mins)
-                <img src="routes_files/2.png" alt="2"><br><br>
-                <a href="hotels.html" class="btn btn-primary">Select</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Via Hathkhamba-Goa Rd </h5>277 km  &nbsp;&nbsp;&nbsp;(6 hours 20 mins)
-                <img src="routes_files/3.png" alt="3"><br><br>
-                <a href="hotels.html" class="btn btn-primary">Select</a>
-              </div>
-            </div>
-          </div>
-        
-        </div>
-      </div>
+      
+      <iframe src="//www.google.com/maps/embed/v1/directions?origin=<?php echo $start_addr;?>&destination=<?php echo $end_addr; ?>&key= AIzaSyBG1_Qr69oaBJp_z9vQRyDBNuJiIGv-UxA" width="600" height="450" frameborder="0" style="border:0" allowfullscreen>Loading...
+      </iframe>
+    
+    </div>
       <br>
     
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="js/popper.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
   
 </body></html>

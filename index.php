@@ -71,8 +71,7 @@
           end_date : $("#end_date").val()
         },
         function(data,status){
-             url = "hotels.php?trip="+data;
-             alert(url);
+             url = "routes.php?trip="+data;
              window.location.href = url;
         });
         //e.preventDefault();

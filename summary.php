@@ -18,10 +18,7 @@ include 'conn.inc.php';
     <script src="js/bootstrap.js"></script>
 
   </head>
-  <body>
-    <div class="container">
-      <br><br><h3>Trip Summary: <a onclick="window.print()" class="btn btn-success float-right">Print</a></h3>
-      <br>
+
       <?php
 
       if(isset($_GET['trip']) && !empty($_GET['trip']))
@@ -49,9 +46,30 @@ include 'conn.inc.php';
        }
 
       ?>
+  <body>
+    <div class="container">
+      <br><br><h3>Trip Summary: <a onclick="window.print()" class="btn btn-success float-right">Print</a> &nbsp; <a class="btn btn-success float-right" data-toggle='modal' data-target='#map_modal' style="margin-right: 15px;">Open Map</a></h3>
+
+      <div class="modal fade" id="map_modal" role="dialog">
+          <div class="modal-dialog modal-lg" style="max-width: 800px; width: 650px; margin: auto;">
+            <div class="modal-content">
+              <div class="modal-body">
+               <iframe src="//www.google.com/maps/embed/v1/directions?origin=<?php echo $start_addr;?>&destination=<?php echo $end_addr; ?>&key= AIzaSyBG1_Qr69oaBJp_z9vQRyDBNuJiIGv-UxA" width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
+              </iframe>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+    </div>
+      <br>
+
       <h4><span class="badge badge-primary"><?php echo $start_addr; ?></span> -------&gt; <span class="badge badge-primary"><?php echo $end_addr; ?></span></h4><br>
       <h4><span class="badge badge-secondary"><?php echo $start_date; ?></span> ---------&gt; <span class="badge badge-secondary"><?php echo $end_date; ?></span><hr>
-      </h4><h4>Hotels: <?php echo "<a data-toggle='modal' data-target='#hotel_modal' class='btn btn-primary' href='hotels.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4>
+
+
+      </h4><h4>Hotels: <?php echo "<a data-toggle='modal' data-target='#hotel_modal' class='btn btn-success' href='hotels.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4>
 
       <div class="modal fade" id="hotel_modal" role="dialog">
           <div class="modal-dialog">
@@ -64,7 +82,7 @@ include 'conn.inc.php';
               </div>
             </div>
           </div>
-    </div>
+      </div>
 
       <?php
 
@@ -77,8 +95,10 @@ include 'conn.inc.php';
             }
             echo '<div class="row">
             ';
+            $num=0;
             while($array = mysqli_fetch_assoc($run))
             {
+                $num++;
                 $hotel_name = $array['name'];
                 $hotel_addr = $array['address'];
                 $hotel_phone = $array['phone'];
@@ -89,7 +109,7 @@ include 'conn.inc.php';
                 echo '<div class="col-sm-6">
                   <div class="card">
                     <div class="card-body">
-                      <a href="'.$hotel_link.'" target="_blank">
+                      <a data-toggle="modal" data-target="#'.$num.'_modal" href="#" target="_blank">
                       <h4 class="card-title">'.$hotel_name.'</h4></a>
                       <p class="card-text">
                         '.$hotel_addr.'<br>
@@ -100,6 +120,20 @@ include 'conn.inc.php';
                     </div>
                   </div>
                   </div>
+
+                  <div class="modal fade" id="'.$num.'_modal" role="dialog">
+                  <div class="modal-dialog modal-lg" style="max-width: 800px; width: 650px; margin: auto;">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                       <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBG1_Qr69oaBJp_z9vQRyDBNuJiIGv-UxA&q='.$hotel_name.'&zoom=10" width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
+                      </iframe>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
                 ';
 
            }
@@ -114,7 +148,7 @@ include 'conn.inc.php';
       
       <br>
 <hr>
-      </h4><h4>Petrol Pumps: <?php echo "<a data-toggle='modal' data-target='#petrol_modal' class='btn btn-primary' href='petrol.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
+      </h4><h4>Petrol Pumps: <?php echo "<a data-toggle='modal' data-target='#petrol_modal' class='btn btn-success' href='petrol.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
 
       <div class="modal fade" id="petrol_modal" role="dialog">
           <div class="modal-dialog">
@@ -173,7 +207,7 @@ include 'conn.inc.php';
 
 
         <hr>
-      </h4><h4>Tourist Spots: <?php echo "<a data-toggle='modal' data-target='#spots_modal' class='btn btn-primary' href='spots.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
+      </h4><h4>Tourist Spots: <?php echo "<a data-toggle='modal' data-target='#spots_modal' class='btn btn-success' href='spots.php?trip=".$_GET['trip']."'><b>+</b></a>"; ?></h4> 
 
       <div class="modal fade" id="spots_modal" role="dialog">
           <div class="modal-dialog">
@@ -230,7 +264,7 @@ include 'conn.inc.php';
         }
        else
        {
-        echo "hotels gandlay";
+        echo "spots gandlay";
        }
 
       ?>
