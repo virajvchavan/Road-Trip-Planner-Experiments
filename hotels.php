@@ -2,27 +2,18 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Road Trip Planner</title>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-
-<!--     <script type="text/javascript">
-     $(document).ready(function(){
-      $(".btn-primary").click(function(){
-        $(this).addClass('btn-success');
-        $(this).html("Added to trip!")
-      });
-    });
-    </script> -->
 
   </head>
   <body>
