@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nearbyPlaces</title>
+</head>
+<style type="text/css">
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+</style>
+<body>
+  <div id="map">
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+var map;
+var service;
+//var infowindow;
+
+var markers = [];
+
+// DElhi lat lng : 28.7041° N, 77.1025°
+
+function initialize() {
+  var pyrmont = new google.maps.LatLng(28.7041,77.1025);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: pyrmont,
+      zoom:15
+    });
+
+  var request = {
+    location: pyrmont,
+    radius: '500',
+    type: ['restaurant']
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+ 
+ 
+
+  google.maps.event.addListener(map, "click", function (e) {
+
+          var request = {
+            location: e.latLng,
+            radius: '500',
+            type: ['restaurant']
+          };
+
+          service = new google.maps.places.PlacesService(map);
+          service.nearbySearch(request, callback);
+
+    });
+}
+
+
+function addMarker(place) {
+	var infowindow = new google.maps.InfoWindow({content : "avbb"});
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+  //  icon: {
+  //    url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+  //    anchor: new google.maps.Point(10, 10),
+  //    scaledSize: new google.maps.Size(10, 17)
+  //  }
+  });
+  markers.push(marker);
+	marker.addListener('click', function() {
+         infowindow.setContent('<div><strong><h4>' + place.name + '</h4></strong><br>' + '<br>'+'<button> Add to Trip </button>' +' </div>');
+          infowindow.open(map, marker);
+    });
+
+}
+
+
+function callback(results, status) {
+  removeAllMarkers();
+  console.log(status);
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log(results);
+    for (var i = 0; i < results.length; i++) {
+      var place = results[i];
+      addMarker(results[i]);
+    }
+  }else{
+
+  }
+}
+
+function removeAllMarkers(){
+  for (var i = 0; i < markers.length; i++ ) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGkV92GKbrF3JnwNPMmvzD5Lrez63qhSU&libraries=places&callback=initialize"></script>
+
+
+
+
+
