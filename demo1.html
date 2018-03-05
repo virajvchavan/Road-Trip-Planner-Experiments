@@ -16,29 +16,22 @@
 	<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/routeboxer/src/RouteBoxer.js" type="text/javascript"></script>
 	<script src="js/demo1.js"></script>
 	<body>
-		<table border="1">
-	  <tr>
-	    <td valign="top">
-	      <div id="map" style="width: 600px; height: 500px;"></div>
-	    </td>
-	    <td>
-	      <div id="side_bar" style="width:200px; height: 600px; overflow: auto"></div>
-	    </td>
-	  </tr>
-	</table>
-	Radius: 
-	<input type="text" id="distance" value="1" size="2">miles of the route from
+		Radius: 
+	<input type="text" id="distance" value="2" size="2">miles of the route from
 	<input type="text" id="from" value="Sangli" />to
 	<input type="text" id="to" value="Kolhapur" />
 	<input type="submit" onclick="route()" />
 	<br>
 	<label>Type</label>
-	<input type="text" id="type" value="gas_station" />
-	<!-- <label>keyword</label>
-	<input type="text" id="keyword" value="" />
-	<label>name</label>
-	<input type="text" id="name" value="" /> -->
-	<div id="towns"></div>
+	<input type="text" id="type" value="restaurant" />
+	
+	<div id="map" style="width: 90%; height: 500px;"></div>
+	
+	<div id="side_bar" style="width:200px; height: 600px; overflow: auto"></div>
+	
+	<div id="restaurants">
+		
+	</div>
 	</body>
 </html>
 

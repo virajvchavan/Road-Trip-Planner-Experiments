@@ -116,7 +116,8 @@ function findPlaces(searchIndex) {
   // var keyword = document.getElementById('keyword').value;
   // var name = document.getElementById('name').value;
   var request = {
-    bounds: boxes[searchIndex]
+    bounds: boxes[searchIndex],
+    minprice: 100
   };
   if (!!type && (type != "")) {
     if (type.indexOf(',') > 0)
@@ -124,12 +125,12 @@ function findPlaces(searchIndex) {
     else
       request.types = [type];
   }
-
-  service.nearbySearch(request, function(results, status) {
+  // if (!!keyword && (keyword != "")) request.keyword = keyword;
+  // if (!!name && (name != "")) request.name = name;
+  service.radarSearch(request, function(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       document.getElementById('side_bar').innerHTML += "bounds[" + searchIndex + "] returns " + results.length + " results<br>"
       for (var i = 0, result; result = results[i]; i++) {
-        debugger
         var marker = createMarker(result);
       }
     } else {
