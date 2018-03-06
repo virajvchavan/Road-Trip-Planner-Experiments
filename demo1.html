@@ -22,6 +22,7 @@
 	<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/routeboxer/src/RouteBoxer.js" type="text/javascript"></script>
 	<script src="js/demo1.js"></script>
 	<body>
+	<div class="container">
 		Radius:
 	<input type="text" id="distance" value="2" size="2">miles of the route from
 	<input type="text" id="from" value="Sangli" />to
@@ -32,9 +33,10 @@
 	<input type="text" id="type" value="restaurant" />
 
 	<div id="map" style="width: 90%; height: 500px;"></div>
-
-	<div id="restaurants">
-
+	<br>
+		<h4>Restaurants: <span id="restaurant_count">0</span> </h4>
+		<div  class="row" id="restaurants">
+	</div>
 	</div>
 	</body>
 </html>
