@@ -154,7 +154,6 @@ function clearBoxes() {
 }
 
 function createMarker(place) {
-
   var placeLoc = place.geometry.location;
   if (place.icon) {
     var image = new google.maps.MarkerImage(
@@ -191,11 +190,18 @@ function createMarker(place) {
       }
     });
   });
+
   restaurant_html = "<div class='col-sm-4'>  <div class='card'> <div class='card-body'>\
-        <a href='' target='_blank'><a href='javascript:google.maps.event.trigger(gmarkers[" + parseInt(gmarkers.length) + "],\"click\");'><h4 class='card-title'>" +  place.name + "</h4></a>\
-        <p class='card-text'>" + place.vicinity + "</p>\
-        <a id='hotel1' class='btn btn-primary'>Add to Trip</a>\
-      </div>";
+        <a href='' target='_blank'><a href='https://www.google.com/maps/place/?q=place_id:" + place.place_id + "' target='_blank'>\
+          <h4 class='card-title'>" +  place.name + " &nbsp;";
+  if(place.rating)
+  {
+    restaurant_html += "<span style='font-size: 12px' class='badge badge-warning'> Rating: " + place.rating + " </span>";
+  }
+  restaurant_html +=    "</h4></a>\
+      <p class='card-text'>" + place.vicinity + "</p>\
+      <a id='hotel1' class='btn btn-primary'>Add to Trip</a>\
+    </div>";
 
   document.getElementById('restaurants').innerHTML += restaurant_html;
 
