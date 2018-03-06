@@ -127,13 +127,9 @@ function findPlaces(searchIndex) {
 
   service.nearbySearch(request, function(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      document.getElementById('side_bar').innerHTML += "bounds[" + searchIndex + "] returns " + results.length + " results<br>"
       for (var i = 0, result; result = results[i]; i++) {
-        debugger
         var marker = createMarker(result);
       }
-    } else {
-      document.getElementById('side_bar').innerHTML += "bounds[" + searchIndex + "] returns 0 results<br>&nbsp;status=" + status + "<br>";
     }
     if (status != google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
       searchIndex++;
@@ -193,12 +189,18 @@ function createMarker(place) {
         infowindow.open(map, marker);
       }
     });
-
   });
+  restaurant_html = "<div class='col-sm'>  <div class='car'> <div class='card-body'>\
+        <a href='' target='_blank'><a href='javascript:google.maps.event.trigger(gmarkers[" + parseInt(gmarkers.length) + "],\"click\");'><h4 class='card-title'>" +  place.name + "</h4></a>\
+        <p class='card-text'>" + place.vicinity + "</p>\
+        <a id='hotel1' class='btn btn-primary'>Add to Trip</a>\
+      </div>";
+
+  document.getElementById('restaurants').innerHTML += restaurant_html;
+
+
   gmarkers.push(marker);
   if (!place.name) place.name = "result " + gmarkers.length;
-  var side_bar_html = "<a href='javascript:google.maps.event.trigger(gmarkers[" + parseInt(gmarkers.length - 1) + "],\"click\");'>" + place.name + "</a><br>";
-  document.getElementById('side_bar').innerHTML += side_bar_html;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

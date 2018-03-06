@@ -7,16 +7,22 @@
 		html, body, #map_canvas {
 		  margin: 0;
 		  padding: 0;
-		  height: 100%;	
+		  height: 100%;
 		}
 	</style>
-		
+
 	</head>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/jquery-3.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdw7AQefpeI_wO2REQ-8sr77XPIqbD6VY&libraries=places"></script>
 	<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/routeboxer/src/RouteBoxer.js" type="text/javascript"></script>
 	<script src="js/demo1.js"></script>
 	<body>
-		Radius: 
+		Radius:
 	<input type="text" id="distance" value="2" size="2">miles of the route from
 	<input type="text" id="from" value="Sangli" />to
 	<input type="text" id="to" value="Kolhapur" />
@@ -24,15 +30,11 @@
 	<br>
 	<label>Type</label>
 	<input type="text" id="type" value="restaurant" />
-	
+
 	<div id="map" style="width: 90%; height: 500px;"></div>
-	
-	<div id="side_bar" style="width:200px; height: 600px; overflow: auto"></div>
-	
+
 	<div id="restaurants">
-		
+
 	</div>
 	</body>
 </html>
-
-
