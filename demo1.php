@@ -23,18 +23,25 @@
 	<script src="js/demo1.js"></script>
 	<body>
 	<div class="container">
-		Radius:
-	<input type="text" id="distance" value="2" size="2">miles of the route from
-	<input type="text" id="from" value="Sangli" />to
-	<input type="text" id="to" value="Kolhapur" />
+	<input type="text" id="distance" value="2" size="2" hidden>From:
+	<input type="text" id="from" value="<?php echo $_GET['start']; ?>" />To:
+	<input type="text" id="to" value="<?php echo $_GET['end']; ?>" />
 	<input type="submit" onclick="route()" />
 	<br>
 	<label>Type</label>
-	<input type="text" id="type" value="restaurant" />
+	<select type="text" id="type">
+		<option value="restaurant">Restaurants</optionmiles of the route >
+		<option value="gas_station">Petrol Pumps</option>
+		<option value="hindu_temple">Temples</option>
+		<option value="museum">Museum</option>
+		<option value="amusement_park">Amusement Park</option>
+		<option value="car_repair">Car repair</option>
+		<option value="art_gallery">Art Gallery</option>
+	</select>
 
 	<div id="map" style="width: 90%; height: 500px;"></div>
 	<br>
-		<h4>Restaurants: <span id="restaurant_count">0</span> </h4>
+		<h4>Results: <span id="restaurant_count">0</span> </h4>
 		<div  class="row" id="restaurants">
 	</div>
 	</div>

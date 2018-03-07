@@ -126,8 +126,8 @@ function findPlaces(searchIndex) {
   }
 
   service.nearbySearch(request, function(results, status) {
-    document.getElementById('restaurant_count').innerHTML = parseInt(document.getElementById('restaurant_count').innerHTML) + results.length
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+      document.getElementById('restaurant_count').innerHTML = parseInt(document.getElementById('restaurant_count').innerHTML) + results.length
       for (var i = 0, result; result = results[i]; i++) {
         var marker = createMarker(result);
       }
@@ -151,6 +151,12 @@ function clearBoxes() {
     }
   }
   boxpolys = null;
+  document.getElementById('restaurants').innerHTML = "";
+  document.getElementById('restaurant_count').innerHTML = "0";
+  for (var i = 0; i < gmarkers.length; i++ ) {
+    gmarkers[i].setMap(null);
+  }
+  gmarkers.length = 0;
 }
 
 function createMarker(place) {

@@ -41,7 +41,7 @@
             </form></div>
           </div>
     </div>
-<!--  AIzaSyBygxeV-oz78Ea1RRelQzNgiEtSdqymapA 
+<!--  AIzaSyBygxeV-oz78Ea1RRelQzNgiEtSdqymapA
  -->    <script>
             //set up autocomplete
             function init() {
@@ -64,7 +64,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
       $("#startBtn").click(function(e){
-        $.post("store_data.php",
+        $.get("store_data.php",
         {
           start_loc: $("#start_location").val(),
           end_loc: $("#end_location").val(),
@@ -72,12 +72,12 @@
           end_date : $("#end_date").val()
         },
         function(data,status){
-             url = "routes.php?trip="+data;
+             url = "demo1.php?start="+$("#start_location").val() + "&end=" + $("#end_location").val();
              window.location.href = url;
         });
         //e.preventDefault();
     });
     });
     </script>
-  
+
 </body></html>
