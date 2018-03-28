@@ -7,6 +7,7 @@ var service = null;
 var gmarkers = [];
 var boxes = null;
 var infowindow = new google.maps.InfoWindow();
+var addToTrip = [];
 
 function initialize() {
   var mapOptions = {
@@ -142,6 +143,9 @@ function findPlaces(searchIndex) {
 
   });
 }
+$('h4').click(function(){
+    alert("The paragraph was clicked.");
+});
 
 // Clear boxes currently on the map
 function clearBoxes() {
@@ -206,7 +210,8 @@ function createMarker(place) {
   }
   restaurant_html +=    "</h4></a>\
       <p class='card-text'>" + place.vicinity + "</p>\
-      <a id='hotel1' class='btn btn-primary'>Add to Trip</a>\
+      <a id='hotel1' class='btn btn-primary' data-placeid ='"+place.place_id+"' onclick='addToPlan(this)' >Add to Trip</a>\
+      <a id='hotel1' class='btn btn-primary' data-placeid ='"+place.place_id+" >Remove from Trip</a>\
     </div>";
 
   document.getElementById('restaurants').innerHTML += restaurant_html;
@@ -217,3 +222,28 @@ function createMarker(place) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+function addToPlan(place){
+    var placeId = place.getAttribute("data-placeid");
+    // alert('Adding '+placeId+'to plan array');
+    service.getDetails({
+            placeId: placeId
+          }, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              waypoint_html = "<option value="+ placeId +">"+ place.name +"</option>"
+
+              document.getElementById('waypoints').innerHTML += waypoint_html;
+            }
+          });
+
+    //push placeId to plan array
+    addToTrip.push(placeId);
+
+}
+
+function getPlaceInfo(placeID)
+{
+
+
+}
