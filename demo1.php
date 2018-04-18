@@ -24,8 +24,8 @@
 	<body>
 	<div class="container">
 	<input type="text" id="distance" value="2" size="2" hidden>From:
-	<input type="text" id="from" />To:
-	<input type="text" id="to" />
+	<input type="text" id="from" value="Sangli"/>To:
+	<input type="text" id="to" value="Kolhapur" />
 	<input type="submit" onclick="route()" />
 	<br>
 	<label>Type</label>
@@ -33,7 +33,7 @@
 		<option value="restaurant">Restaurants</optionmiles of the route >
 		<option value="gas_station">Petrol Pumps</option>
 		<option value="hindu_temple">Temples</option>
-		<option value="museum">Museum</option>
+		<option value="museum" selected="true">Museum</option>
 		<option value="amusement_park">Amusement Park</option>
 		<option value="car_repair">Car repair</option>
 		<option value="art_gallery">Art Gallery</option>
@@ -44,18 +44,21 @@
 		<h4>Results: <span id="restaurant_count">0</span> </h4>
 		<div  class="row" id="restaurants">
 		</div>
-	</div>
-
-	<div>
-		<button id='finalclick'> Finalize </button>
-		 	<select id="selectNumber">
-    			<option>Choose Order</option>
-  			</select>
-	</div>
-	<div>
-		<h4>Selected Places:</h4>
-		<div  class="row" id="selected_places">
+		<div>
+			<button id='finalclick'> Finalize </button>
+				<select id="selectNumber">
+						<option>Choose Order</option>
+					</select>
 		</div>
+		<div>
+			<h4>Selected Places:</h4>
+			<select multiple id="waypoints">
+	      
+	    </select>
+	    <button id="get-way" onclick="getWayPoints()">Pepsi</button>
+		</div>
+	<br>
+	<div id="naya-map" style="width: 90%; height: 500px;"></div>
 	</div>
 	</body>
 </html>
