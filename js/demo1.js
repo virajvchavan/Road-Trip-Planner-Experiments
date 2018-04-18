@@ -9,6 +9,8 @@ var boxes = null;
 var infowindow = new google.maps.InfoWindow();
 var addToTrip = [];
 
+
+
 function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(16.85, 74.58),
@@ -223,9 +225,11 @@ function createMarker(place) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-
 function addToPlan(place){
     var placeId = place.getAttribute("data-placeid");
+    document.querySelector('[data-placeid="' + placeId + '"]').classList.remove('btn-primary');
+    document.querySelector('[data-placeid=\'' + placeId + '\']').classList.add('btn-success');
+    document.querySelector('[data-placeid=\'' + placeId + '\']').innerHTML = "Added";
     // alert('Adding '+placeId+'to plan array');
     service.getDetails({
             placeId: placeId
