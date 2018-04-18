@@ -18,7 +18,9 @@
 	<script src="js/jquery-3.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdw7AQefpeI_wO2REQ-8sr77XPIqbD6VY&libraries=places"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBghm1BA7TPT0CrpP-d-qLC2MYn2UlXYZ8&libraries=places"></script>
+	 <!-- AIzaSyBghm1BA7TPT0CrpP-d-qLC2MYn2UlXYZ8  -->
+	 <!-- AIzaSyCdw7AQefpeI_wO2REQ-8sr77XPIqbD6VY -->
 	<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/routeboxer/src/RouteBoxer.js" type="text/javascript"></script>
 	<script src="js/demo1.js"></script>
 	<body>
@@ -50,16 +52,20 @@
 			<br>
 			<div id="map" style="width: 90%; height: 500px;"></div>
 			<br>
-				<h4>Results: <span id="restaurant_count">0</span> </h4>
-				<div class="row" id="restaurants">
-				</div>
-				<div>
+			<div class="row">
+				<div id="selected_waypoints" class="col-sm-3">
 					<h4>Selected Places:</h4>
-					<select class="form-control col-lg-4 bg-dark text-white" multiple id="waypoints">
+					<select class="form-control bg-dark text-white" multiple id="waypoints">
 			      
 			    </select>
 			    <button id="get-way" class="btn btn-success" onclick="getWayPoints()">Get Route</button>
 				</div>
+				<div class="col-sm-8">
+					<h4>Results: <span id="restaurant_count">0</span> </h4>
+					<div class="row" id="restaurants">
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<br>
@@ -67,6 +73,8 @@
 			<a id="to_page1" href='#' class="btn btn-primary float-right">Replan</a>
 			<h4>Your personalised route: </h4>
 			<div id="naya-map" style="width: 90%; height: 500px;"></div>
+			<br>
+			<div id="directions-panel"></div>
 		</div>
 	</div>
 	</body>
