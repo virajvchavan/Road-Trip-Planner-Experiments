@@ -171,7 +171,11 @@ function createMarker(place) {
     return;
   if(parseFloat(place.rating) < 3.5)
     return;
-  console.log(place)
+  if(Math.floor((Math.random() * 10) + 1) > 6)
+  {
+    console.log("rand: rejected");
+    return;
+  }
   document.getElementById('restaurant_count').innerHTML = parseInt(document.getElementById('restaurant_count').innerHTML) + 1;
   var placeLoc = place.geometry.location;
   if (place.icon) {

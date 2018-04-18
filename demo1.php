@@ -23,11 +23,12 @@
 	<script src="js/demo1.js"></script>
 	<body>
 	<div class="container">
-	<input type="text" id="distance" value="2" size="2" hidden>From:
-	<input type="text" id="from" value="Sangli"/>To:
-	<input type="text" id="to" value="Kolhapur" />
-	<input type="submit" onclick="route()" />
+	<div class="hidden" hidden>
+		<input type="text" id="distance" value="2" size="2" hidden>From:
+		<input type="text" id="from" value=<?php echo '"'.$_GET['start'].'"' ?> />To:
+		<input type="text" id="to" value=<?php echo '"'.$_GET['end'].'"' ?> />
 	<br>
+	</div>
 	<label>Type</label>
 	<select type="text" id="type">
 		<option value="restaurant">Restaurants</optionmiles of the route >
@@ -38,7 +39,8 @@
 		<option value="car_repair">Car repair</option>
 		<option value="art_gallery">Art Gallery</option>
 	</select>
-
+	<input type="submit" value="Search" onclick="route()" />
+	<br>
 	<div id="map" style="width: 90%; height: 500px;"></div>
 	<br>
 		<h4>Results: <span id="restaurant_count">0</span> </h4>
