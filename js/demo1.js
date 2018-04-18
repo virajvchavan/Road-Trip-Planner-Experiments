@@ -90,7 +90,7 @@ function route() {
       var path = result.routes[0].overview_path;
       boxes = routeBoxer.box(path, distance);
       // alert(boxes.length);
-      //drawBoxes();
+      // drawBoxes();
       findPlaces(0);
     } else {
       alert("Directions query failed: " + status);
@@ -130,9 +130,9 @@ function findPlaces(searchIndex) {
 
   service.nearbySearch(request, function(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-      document.getElementById('restaurant_count').innerHTML = parseInt(document.getElementById('restaurant_count').innerHTML) + results.length
-      for (var i = 0, result; result = results[i]; i++) {
-        var marker = createMarker(result);
+      for (var i = 0; i < 3; i++) {
+        if(typeof results[i] != 'undefined')
+          var marker = createMarker(results[i]);
       }
     }
     if (status != google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
@@ -165,7 +165,14 @@ function clearBoxes() {
   gmarkers.length = 0;
 }
 
+//does a lot more than just adding a marker
 function createMarker(place) {
+  if(!("rating" in place))
+    return;
+  if(parseFloat(place.rating) < 3.5)
+    return;
+  console.log(place)
+  document.getElementById('restaurant_count').innerHTML = parseInt(document.getElementById('restaurant_count').innerHTML) + 1;
   var placeLoc = place.geometry.location;
   if (place.icon) {
     var image = new google.maps.MarkerImage(
