@@ -30,17 +30,23 @@
 		<br>
 		</div>
 		<div id="page1">
-			<label>Type</label>
-			<select type="text" id="type">
-				<option value="restaurant">Restaurants</optionmiles of the route >
-				<option value="gas_station">Petrol Pumps</option>
-				<option value="hindu_temple">Temples</option>
-				<option value="museum" selected="true">Museum</option>
-				<option value="amusement_park">Amusement Park</option>
-				<option value="car_repair">Car repair</option>
-				<option value="art_gallery">Art Gallery</option>
-			</select>
-			<input type="submit" value="Search" onclick="route()" />
+			<br>
+			<div class="container">
+			<div class="row">
+				<h5 class="col-sm-2">Search for: </h5>
+				<select class="form-control col-sm-3 bg-dark text-white" type="text" id="type">
+					<option value="restaurant">Restaurants</optionmiles of the route >
+					<option value="gas_station">Petrol Pumps</option>
+					<option value="hindu_temple">Temples</option>
+					<option value="museum" selected="true">Museum</option>
+					<option value="amusement_park">Amusement Park</option>
+					<option value="car_repair">Car repair</option>
+					<option value="art_gallery">Art Gallery</option>
+				</select>
+				&nbsp;
+				<input type="submit" value="Search" class="btn btn-success col-sm-2" onclick="route()" />
+			</div>
+			</div>
 			<br>
 			<div id="map" style="width: 90%; height: 500px;"></div>
 			<br>
@@ -49,10 +55,10 @@
 				</div>
 				<div>
 					<h4>Selected Places:</h4>
-					<select multiple id="waypoints">
+					<select class="form-control col-lg-4 bg-dark text-white" multiple id="waypoints">
 			      
 			    </select>
-			    <button id="get-way" onclick="getWayPoints()">Get Route</button>
+			    <button id="get-way" class="btn btn-success" onclick="getWayPoints()">Get Route</button>
 				</div>
 		</div>
 
