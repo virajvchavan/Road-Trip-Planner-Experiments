@@ -23,44 +23,45 @@
 	<script src="js/demo1.js"></script>
 	<body>
 	<div class="container">
-	<div class="hidden" hidden>
-		<input type="text" id="distance" value="2" size="2" hidden>From:
-		<input type="text" id="from" value=<?php echo '"'.$_GET['start'].'"' ?> />To:
-		<input type="text" id="to" value=<?php echo '"'.$_GET['end'].'"' ?> />
-	<br>
-	</div>
-	<label>Type</label>
-	<select type="text" id="type">
-		<option value="restaurant">Restaurants</optionmiles of the route >
-		<option value="gas_station">Petrol Pumps</option>
-		<option value="hindu_temple">Temples</option>
-		<option value="museum" selected="true">Museum</option>
-		<option value="amusement_park">Amusement Park</option>
-		<option value="car_repair">Car repair</option>
-		<option value="art_gallery">Art Gallery</option>
-	</select>
-	<input type="submit" value="Search" onclick="route()" />
-	<br>
-	<div id="map" style="width: 90%; height: 500px;"></div>
-	<br>
-		<h4>Results: <span id="restaurant_count">0</span> </h4>
-		<div  class="row" id="restaurants">
+		<div class="hidden" hidden>
+			<input type="text" id="distance" value="2" size="2" hidden>From:
+			<input type="text" id="from" value=<?php echo '"'.$_GET['start'].'"' ?> />To:
+			<input type="text" id="to" value=<?php echo '"'.$_GET['end'].'"' ?> />
+		<br>
 		</div>
-		<div>
-			<button id='finalclick'> Finalize </button>
-				<select id="selectNumber">
-						<option>Choose Order</option>
-					</select>
+		<div id="page1">
+			<label>Type</label>
+			<select type="text" id="type">
+				<option value="restaurant">Restaurants</optionmiles of the route >
+				<option value="gas_station">Petrol Pumps</option>
+				<option value="hindu_temple">Temples</option>
+				<option value="museum" selected="true">Museum</option>
+				<option value="amusement_park">Amusement Park</option>
+				<option value="car_repair">Car repair</option>
+				<option value="art_gallery">Art Gallery</option>
+			</select>
+			<input type="submit" value="Search" onclick="route()" />
+			<br>
+			<div id="map" style="width: 90%; height: 500px;"></div>
+			<br>
+				<h4>Results: <span id="restaurant_count">0</span> </h4>
+				<div class="row" id="restaurants">
+				</div>
+				<div>
+					<h4>Selected Places:</h4>
+					<select multiple id="waypoints">
+			      
+			    </select>
+			    <button id="get-way" onclick="getWayPoints()">Get Route</button>
+				</div>
 		</div>
-		<div>
-			<h4>Selected Places:</h4>
-			<select multiple id="waypoints">
-	      
-	    </select>
-	    <button id="get-way" onclick="getWayPoints()">Pepsi</button>
+
+		<br>
+		<div id="page2">
+			<a id="to_page1" href='#' class="btn btn-primary float-right">Replan</a>
+			<h4>Your personalised route: </h4>
+			<div id="naya-map" style="width: 90%; height: 500px;"></div>
 		</div>
-	<br>
-	<div id="naya-map" style="width: 90%; height: 500px;"></div>
 	</div>
 	</body>
 </html>

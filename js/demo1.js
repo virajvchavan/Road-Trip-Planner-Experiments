@@ -171,7 +171,7 @@ function createMarker(place) {
     return;
   if(parseFloat(place.rating) < 3.5)
     return;
-  if(Math.floor((Math.random() * 10) + 1) > 6)
+  if(Math.floor((Math.random() * 10) + 1) > 8)
   {
     console.log("rand: rejected");
     return;
@@ -262,7 +262,8 @@ function addToSorted(placeName){
 }
 
 function getWayPoints(){
-  
+  document.getElementById('page1').style.display = 'none';
+  document.getElementById('page2').style.display = 'block';
   console.log(sortedPlan);
 }
 
@@ -283,7 +284,17 @@ function initMapForWayPoints() {
   document.getElementById('get-way').addEventListener('click', function() {
       calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
+  document.getElementById('page1').style.display = 'block';
+  document.getElementById('page2').style.display = 'none';
+
+  document.getElementById('to_page1').addEventListener('click', function() {
+    document.getElementById('page1').style.display = 'block';
+    document.getElementById('page2').style.display = 'none';
+  });
 }
+
+
+
 
 
 
