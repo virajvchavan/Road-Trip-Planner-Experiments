@@ -70,11 +70,13 @@
 
 		<br>
 		<div id="page2">
-			<a id="to_page1" href='#' class="btn btn-primary float-right">Replan</a>
+			<a id="to_page1" href='#' style="margin: 5px" class="btn btn-primary float-right">Replan</a>
+			<a onclick="window.print();" style="margin: 5px" class="btn btn-success float-right">Print</a>
 			<h4>Your personalised route: </h4>
 			<div id="naya-map" style="width: 90%; height: 500px;"></div>
 			<br>
 			<div id="directions-panel"></div>
+			<div id="selected_places"></div>
 		</div>
 	</div>
 	</body>
