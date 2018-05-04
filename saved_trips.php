@@ -3,11 +3,15 @@
 <head>
 	<title>Saved Trips</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/jquery-3.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBghm1BA7TPT0CrpP-d-qLC2MYn2UlXYZ8&libraries=places"></script>
+	<style type="text/css">
+		.card{
+			margin: 10px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -39,7 +43,65 @@
         }
 
       ?>
+    <br><br>
 		<h3>Saved Trips</h3>
+		<div class="row">
+			<div class="card col-sm-5" style="width: 18rem;">
+			  <div class="card-header">
+			    Sangli to Goa
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">Card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Cras justo odio</li>
+			    <li class="list-group-item">Dapibus ac facilisis in</li>
+			    <li class="list-group-item">Vestibulum at eros</li>
+			  </ul>
+			  <div class="card-body">
+			    <a href="#" class="card-link">Card link</a>
+			    <a href="#" class="card-link">Another link</a>
+			  </div>
+			</div>
+			<div class="card col-sm-5" style="width: 18rem;">
+			  <div class="card-header">
+			    Sangli to Goa
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">Card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Cras justo odio</li>
+			    <li class="list-group-item">Dapibus ac facilisis in</li>
+			    <li class="list-group-item">Vestibulum at eros</li>
+			  </ul>
+			  <div class="card-body">
+			    <a href="#" class="card-link">Card link</a>
+			    <a href="#" class="card-link">Another link</a>
+			  </div>
+			</div>
+
+			<div class="card col-sm-5" style="width: 18rem;">
+			  <div class="card-header">
+			    Sangli to Goa
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">Card title</h5>
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Cras justo odio</li>
+			    <li class="list-group-item">Dapibus ac facilisis in</li>
+			    <li class="list-group-item">Vestibulum at eros</li>
+			  </ul>
+			  <div class="card-body">
+			    <a href="#" class="card-link">Card link</a>
+			    <a href="#" class="card-link">Another link</a>
+			  </div>
+			</div>
+		</div>
 	</div>	
 </body>
 </html>
