@@ -119,7 +119,7 @@ background:#3594D2;
 
             <input id='login_input_username' type='text' name="user_name" value="username" class="email" required />
               
-            <input id='login_input_username' type="password" name="user_password" value="email" class="email" autocomplete="off" required />
+            <input id='login_input_password' type="password" name="user_password" value="email" class="email" autocomplete="off" required />
               
             <input type='submit' name='login' class="btn" value="Login"> <!-- End Btn -->
             <a class="btn" href="register.php">Register</a>

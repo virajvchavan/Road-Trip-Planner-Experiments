@@ -14,25 +14,119 @@ if (isset($registration)) {
 }
 ?>
 
-<!-- register form -->
-<form method="post" action="register.php" name="registerform">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: #3498db;
+  margin: 0 auto 0 auto;  
+  width:100%; 
+  text-align:center;
+  margin: 20px 0px 20px 0px;   
+}
 
-    <!-- the user name input field uses a HTML5 pattern check -->
-    <label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label>
-    <input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required />
+p{
+  font-size:12px;
+  text-decoration: none;
+  color:#ffffff;
+}
 
-    <!-- the email input field uses a HTML5 email type check -->
-    <label for="login_input_email">User's email</label>
-    <input id="login_input_email" class="login_input" type="email" name="user_email" required />
+h1{
+  font-size:1.5em;
+  color:#525252;
+}
 
-    <label for="login_input_password_new">Password (min. 6 characters)</label>
-    <input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" />
+.box{
+  background:white;
+  width:300px;
+  border-radius:6px;
+  margin: 0 auto 0 auto;
+  padding:0px 0px 70px 0px;
+  border: #2980b9 4px solid; 
+}
 
-    <label for="login_input_password_repeat">Repeat password</label>
-    <input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" />
-    <input type="submit"  name="register" value="Register" />
+.email{
+  background:#ecf0f1;
+  border: #ccc 1px solid;
+  border-bottom: #ccc 2px solid;
+  padding: 8px;
+  width:250px;
+  color:#AAAAAA;
+  margin-top:10px;
+  font-size:1em;
+  border-radius:4px;
+}
 
-</form>
+.password{
+  border-radius:4px;
+  background:#ecf0f1;
+  border: #ccc 1px solid;
+  padding: 8px;
+  width:250px;
+  font-size:1em;
+}
 
-<!-- backlink -->
-<a href="login.php">Back to Login Page</a>
+.btn{
+  background:#2ecc71;
+  width:125px;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: #27ae60 1px solid;
+  
+  margin-top:20px;
+  margin-bottom:20px;
+  float:left;
+  margin-left:16px;
+  font-weight:800;
+  font-size:0.8em;
+}
+
+.btn:hover{
+  background:#2CC06B; 
+}
+
+#btn2{
+  float:left;
+  background:#3498db;
+  width:125px;  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: #2980b9 1px solid;
+  
+  margin-top:20px;
+  margin-bottom:20px;
+  margin-left:10px;
+  font-weight:800;
+  font-size:0.8em;
+}
+
+#btn2:hover{ 
+background:#3594D2; 
+}
+    </style>
+</head>
+<body>
+    <form method="post" action="register.php" name="loginform">
+        <div class="box">
+            <h1>Road Trip Planner</h1>
+
+            <input id='login_input_username' type='text' name="user_name" value="username" class="email" required />
+            <input id='login_input_email' type='email' name="user_email" value="email" class="email" required />
+            <input id='login_input_password_new' type="password" name="user_password_new" value="email" class="email" autocomplete="off" required />
+            <input id='login_input_password_repeat' type="password" name="user_password_repeat" value="email" class="email" autocomplete="off" required />
+              
+            <input type='submit' name='register' class="btn" value="Register"> <!-- End Btn -->
+        </div> <!-- End Box -->
+        <a href="login.php">Back to Login Page</a>
+    </form>
+      
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+</body>
+</html>
