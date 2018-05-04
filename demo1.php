@@ -25,6 +25,34 @@
 	<script src="js/demo1.js"></script>
 	<body>
 	<div class="container">
+		<?php 
+        // checking for minimum PHP version
+          if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+            exit("Sorry, Simple PHP Login does not run on a PHP version smaller than 5.3.7 !");
+          } else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+            // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
+            // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
+            require_once("libraries/password_compatibility_library.php");
+          }
+
+          // include the configs / constants for the database connection
+          require_once("config/db.php");
+
+          // load the login class
+          require_once("classes/Login.php");
+
+        $login = new Login();
+        // ... ask if we are logged in here:
+        if ($login->isUserLoggedIn() == true) {
+            echo("Hello ". $_SESSION['user_name'] .", <a style='align: right;' href='saved_trips.php' class='btn btn-success'> View Saved Trips </a>
+              <a style='align: right;' href='login.php?logout' class='btn btn-danger'> Logout </a>");
+
+        } else {
+            echo(" <a href='login.php' class='btn btn-success pull-right'> Login </a>
+      <a href='register.php' class='btn btn-primary pull-right'>Register</a>");
+        }
+
+      ?>
 		<div class="hidden" hidden>
 			<input type="text" id="distance" value="2" size="2" hidden>From:
 			<input type="text" id="from" value=<?php echo '"'.$_GET['start'].'"' ?> />To:
@@ -72,6 +100,7 @@
 		<div id="page2">
 			<a id="to_page1" href='#' style="margin: 5px" class="btn btn-primary float-right">Add/Remove Places</a>
 			<a onclick="window.print();" style="margin: 5px" class="btn btn-success float-right">Print</a>
+			<br>
 			<h4>Your personalised route: </h4>
 			<div id="naya-map" style="width: 90%; height: 500px;"></div>
 			<br>
