@@ -33,7 +33,8 @@
         $login = new Login();
         // ... ask if we are logged in here:
         if ($login->isUserLoggedIn() == true) {
-            echo("Hello ". $_SESSION['user_name'] .", <a href='login.php?logout' class='btn btn-success pull-right'> Logout </a>");
+            echo("Hello ". $_SESSION['user_name'] .", <a style='align: right;' href='saved_trips.php' class='btn btn-success'> View Saved Trips </a>
+              <a style='align: right;' href='login.php?logout' class='btn btn-danger'> Logout </a>");
 
         } else {
             echo(" <a href='login.php' class='btn btn-success pull-right'> Login </a>
