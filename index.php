@@ -14,8 +14,33 @@
   </head>
   <body>
     <div class="container">
-      <div class="btn btn-success pull-right"> Login </div>
-      <div class="btn btn-primary pull-right">Register</div>
+      <?php 
+        // checking for minimum PHP version
+          if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+            exit("Sorry, Simple PHP Login does not run on a PHP version smaller than 5.3.7 !");
+          } else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+            // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
+            // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
+            require_once("libraries/password_compatibility_library.php");
+          }
+
+          // include the configs / constants for the database connection
+          require_once("config/db.php");
+
+          // load the login class
+          require_once("classes/Login.php");
+
+        $login = new Login();
+        // ... ask if we are logged in here:
+        if ($login->isUserLoggedIn() == true) {
+            echo("Hello ". $_SESSION['user_name'] .", <a href='login.php?logout' class='btn btn-success pull-right'> Logout </a>");
+
+        } else {
+            echo(" <a href='login.php' class='btn btn-success pull-right'> Login </a>
+      <a href='register.php' class='btn btn-primary pull-right'>Register</a>");
+        }
+
+      ?>
       <br><br><h3>Plan Your Trip: </h3>
       <br>
           <div class="card">
