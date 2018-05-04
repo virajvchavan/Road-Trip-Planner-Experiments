@@ -14,6 +14,8 @@
   </head>
   <body>
     <div class="container">
+      <div class="btn btn-success pull-right"> Login </div>
+      <div class="btn btn-primary pull-right">Register</div>
       <br><br><h3>Plan Your Trip: </h3>
       <br>
           <div class="card">
